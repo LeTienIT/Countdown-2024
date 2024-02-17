@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>CountDown 2024</title>
+</head>
+<body>
+    <h1 class="heading">
+        <span id="heading">ĐẾM NGƯỢC</span>
+        <span class="heading_sub">TẾT NGUYÊN ĐÁN GIÁP THÌN 2024</span>
+    </h1>
+    <div class="counter">
+        <div class="glass">
+            <div class="card">
+                <span class="value" id="days">00</span>
+                <span class="caption">days</span>
+            </div>
+        </div>
+        <div class="glass">
+            <div class="card">
+                <span class="value" id="hours">00</span>
+                <span class="caption">hours</span>
+            </div>
+        </div>
+        <div class="glass">
+            <div class="card">
+                <span class="value" id="minutes">00</span>
+                <span class="caption">minutes</span>
+            </div>
+        </div>
+        <div class="glass">
+            <div class="card">
+                <span class="value" id="seconds">00</span>
+                <span class="caption">seconds</span>
+            </div>
+        </div>
+    </div>
+    <form id="form_add" class="add_happy">
+        <input type="text" name="content" class="text_input" id="messageInput">
+        <input type="submit" value="Thêm lời chúc" class="add">
+    </form>
+    
+    <p id="thongbao"></p>
+    <button class="buttonLove">Lì Xì</button>
+    <button class="buttonQuay">HAPPY NEW YEAR</button>
+
+    <div class="wrapperLetterForm">
+        <div class="boxLetter">
+            <i class="fa-solid fa-xmark close_letter">close</i>
+            <div class="formLetter">
+                <div class="heartLetter">
+                    <div class="heartLetterItem"></div>
+                </div>
+                <div class="heartLetter">
+                    <div class="heartLetterItem"></div>
+                </div>
+                
+                <div class="wrapperLetter">
+                    <div class="giftbox">
+                        <div class="img">
+                            <img src="" alt="" id="anhBaoLiXi">
+                        </div>
+                    </div>
+                    <div class="textLetter">
+                        <h2></h2>
+                        <p class="contentLetter"></p>
+                        <p class="subcontent"></p>
+                        <div class="heartAnimation">
+                            <img src="root/gif/heartAnimation.gif" alt="">
+                        </div>
+                    </div>
+                    <div class="mewmew1">
+                        <img src="" alt="">
+                    </div>
+                    <div class="mewmew2">
+                        <img src="" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="before"></div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+    <script src="script_2.js"></script>
+    <script>
+        const form_add = document.getElementById("form_add");
+        const thongbao = document.getElementById("thongbao");
+        form_add.addEventListener("submit",function (event){
+            event.preventDefault(); 
+            var messageContent = document.getElementById("messageInput").value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "add_message.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    thongbao.innerHTML = xhr.responseText;
+                    console.log(xhr.responseText);
+                }
+            };
+            xhr.send("content=" + encodeURIComponent(messageContent));
+        });
+    </script>
+    
+    <div id="main_content">
+        <div class="container">
+            <div class="loading-init">
+                <div class="loading-init__header">Loading...</div>
+                <div class="loading-init__status">Assembling Shells</div>
+            </div>
+            <div class="stage-container remove">
+                <div class="canvas-container">
+                    <canvas id="trails-canvas"></canvas>
+                    <canvas id="main-canvas"></canvas>
+                </div>
+                <div class="controls">
+                    <div class="btn pause-btn">
+                        <svg fill="white" width="24" height="24"><use href="#icon-pause" xlink:href="#icon-pause"></use></svg>
+                    </div>
+                    <div class="btn sound-btn">
+                        <svg fill="white" width="24" height="24"><use href="#icon-sound-off" xlink:href="#icon-sound-off"></use></svg>
+                    </div>
+                    <div class="btn settings-btn">
+                        <svg fill="white" width="24" height="24"><use href="#icon-settings" xlink:href="#icon-settings"></use></svg>
+                    </div>
+                </div>
+                <div class="menu">
+                    <div class="menu__inner-wrap">
+                        <div class="btn btn--bright close-menu-btn">
+                            <svg fill="white" width="24" height="24"><use href="#icon-close" xlink:href="#icon-close"></use></svg>
+                        </div>
+                        <div class="menu__header">Settings</div>
+                        <div class="menu__subheader">For more info, click any label.</div>
+                        <form>
+                            <div class="form-option form-option--select">
+                                <label class="shell-type-label">Shell Type</label>
+                                <select class="shell-type"></select>
+                            </div>
+                            <div class="form-option form-option--select">
+                                <label class="shell-size-label">Shell Size</label>
+                                <select class="shell-size"></select>
+                            </div>
+                            <div class="form-option form-option--select">
+                                <label class="quality-ui-label">Quality</label>
+                                <select class="quality-ui"></select>
+                            </div>
+                            <div class="form-option form-option--select">
+                                <label class="sky-lighting-label">Sky Lighting</label>
+                                <select class="sky-lighting"></select>
+                            </div>
+                            <div class="form-option form-option--select">
+                                <label class="scaleFactor-label">Scale</label>
+                                <select class="scaleFactor"></select>
+                            </div>
+                            <div class="form-option form-option--checkbox">
+                                <label class="auto-launch-label">Auto Fire</label>
+                                <input class="auto-launch" type="checkbox" />
+                            </div>
+                            <div class="form-option form-option--checkbox form-option--finale-mode">
+                                <label class="finale-mode-label">Finale Mode</label>
+                                <input class="finale-mode" type="checkbox" />
+                            </div>
+                            <div class="form-option form-option--checkbox">
+                                <label class="hide-controls-label">Hide Controls</label>
+                                <input class="hide-controls" type="checkbox" />
+                            </div>
+                            <div class="form-option form-option--checkbox form-option--fullscreen">
+                                <label class="fullscreen-label">Fullscreen</label>
+                                <input class="fullscreen" type="checkbox" />
+                            </div>
+                            <div class="form-option form-option--checkbox">
+                                <label class="long-exposure-label">Open Shutter</label>
+                                <input class="long-exposure" type="checkbox" />
+                            </div>
+                        </form>
+                        <div class="credits">
+                            Passionately built by <a href="https://cmiller.tech/" target="_blank">Caleb Miller</a>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="help-modal">
+                <div class="help-modal__overlay"></div>
+                <div class="help-modal__dialog">
+                    <div class="help-modal__header"></div>
+                    <div class="help-modal__body"></div>
+                    <button type="button" class="help-modal__close-btn">Close</button>
+                </div>
+            </div>
+        </div>	
+    </div>
+    
+    <div class="caudoi">
+        <div class="content_caudo">
+            <div class="vetrai">
+                <span class="chu chu_light">Năm</span>
+                <span class="chu">Mới</span>
+                <span class="chu">Hạnh</span>
+                <span class="chu">Phúc</span>
+                <span class="chu">Bình</span>
+                <span class="chu">An</span>
+                <span class="chu">Tới</span>
+            </div>
+
+            <div class="vephai">
+                <span class="chu">Ngày</span>
+                <span class="chu">Xuân</span>
+                <span class="chu">Vinh</span>
+                <span class="chu">Hoa</span>
+                <span class="chu">Phú</span>
+                <span class="chu">Quý</span>
+                <span class="chu">Về</span>
+            </div>
+        </div>
+    </div>
+
+    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/fscreen%401.0.1.js'></script>
+    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/Stage%400.1.4.js'></script>
+    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/MyMath.js'></script>
+    <script  src="script3.js"></script>
+    <script>
+        const main_content = document.getElementById("main_content");
+        const happy = document.querySelector(".buttonQuay");
+        happy.addEventListener("click", function() {
+            console.log(main_content.style.display);
+            if(main_content.style.display === '')
+            {
+                main_content.style.display = "flex";
+                setTimeout(function() {
+                    main_content.style.display = "none";
+                }, 20000);
+            }
+            
+        });
+    </script>
+
+    <script>
+        
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
