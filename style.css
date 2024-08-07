@@ -1,10 +1,23 @@
 @import url("https://fonts.googleapis.com/css?family=Caveat");
 
 @font-face {
-    font-family: 'font_thu_phap'; /* Đặt tên cho font */
-    src: url(./Vongdohl.ttf) format('truetype'); /* Đường dẫn đến file font */
+    font-family: 'font_thu_phap';
+    src: url(./Font-Thu-Phap/SVN-Vantom.otf) format('opentype');
+    font-weight: normal;
+    font-style: normal;
 }
-
+@font-face {
+    font-family: 'font_cau_doi';
+    src: url(./Font-Thu-Phap/MTD_QuangNinh_Thuphap_1.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'font_thu_phap_2';
+    src: url(./Font-Thu-Phap/SVN-Vantom.otf) format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
 body{
     position: relative;
     z-index: 100;
@@ -25,7 +38,7 @@ body{
   display: none;
 }
 
-.stars {
+/* .stars {
   position: absolute;
   top: 0;
   right: 0;
@@ -50,8 +63,8 @@ body{
 }
 .stars:before {
   background-size: 200px;
-  opacity: 0.6;
-}
+  opacity: 0.6; 
+}*/
 
 @-webkit-keyframes rotation {
   0% {
@@ -139,14 +152,15 @@ body .glass::before{
     margin: 0;
     font-size: 3.2em;
     color: #FFD700;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'font_thu_phap', sans-serif;
     transform: rotateX(45deg);
+    word-spacing: 12px;
 }
 .new_heading{
     font-size: 1em;
     text-align: center;
     color: #fff6a9;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'font_thu_phap', sans-serif;
     font-weight: 400;
     text-shadow: 0 0 5px #ffa500,0 0 15px #ffa500,0 0 20px #ffa500,
                 0 0 40px #ffa500,0 0 60px #ffa500,0 0 10px #ffa500,0 0 98px #ffa500;
@@ -156,12 +170,13 @@ body .glass::before{
 .heading_sub{
     font-size: 0.8em;
     color: #FFD700;
-    font-family: 'Times New Roman', Times, serif;
+    word-spacing: 10px;
+    font-family: 'font_thu_phap', sans-serif;
 }
 .heading_sub.new_heading{
     text-align: center;
     color: #fff6a9;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'font_thu_phap', sans-serif;
     font-weight: 400;
     text-shadow: 0 0 5px #ffa500,0 0 15px #ffa500,0 0 20px #ffa500,
                 0 0 40px #ffa500,0 0 60px #ffa500,0 0 10px #ffa500,0 0 98px #ffa500;
@@ -194,6 +209,7 @@ body .glass::before{
     flex-direction: column;
     align-items: center;
     gap: 0.25em;
+    font-family: 'font_thu_phap', sans-serif;
 }
 .value{
     font-size: 4em;
@@ -431,9 +447,10 @@ body .glass::before{
     padding: 6px 3px;
     /* width: 60%; */
     color: red;
-    font-size: 16px;
+    font-size: 20px;
     flex: 1 1 60%;
     border-radius: 10px;
+    font-family: 'font_thu_phap', sans-serif;
 }
 .add_happy .add{
     padding: 5px;
@@ -442,7 +459,7 @@ body .glass::before{
     color: red;
     cursor: pointer;
     transition: .5s;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'font_thu_phap', sans-serif;
     border-radius: 10px;
     outline: none;
     border: none;
@@ -459,7 +476,7 @@ body .glass::before{
     background-color: yellow;
     color: red;
     font-size: 18px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'font_thu_phap', sans-serif;
     cursor: pointer;
     transition: .5s;
     border-radius: 15px;
@@ -507,7 +524,7 @@ body .glass::before{
     /* opacity: 0.5; */
 }
 .chu{
-    font-family: 'font_thu_phap',cursive;
+    font-family: 'font_cau_doi', sans-serif;
     font-size: 35px;
     text-shadow: 0 0 5px #ffa500,0 0 15px #ffa500,0 0 20px #ffa500,
                 0 0 40px #ffa500,0 0 60px #ff0000,0 0 10px #ffa500,0 0 98px #ff0000;

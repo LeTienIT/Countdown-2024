@@ -5,7 +5,7 @@ const $days = $("days");
 const $hours = $("hours");
 const $minutes = $("minutes");
 const $seconds = $("seconds");
-const targetDate = new Date('2024-02-09T23:59');
+const targetDate = new Date('2025-02-28T23:59');
 let a = 0;
 const updateTimer = ()=>{
     let totalInSec = Math.floor(
@@ -38,7 +38,7 @@ const updateTimer = ()=>{
     $days.innerText = format(days);
     if(days===0 && hours===0 && minutes===0 && seconds===0)
     {
-        $seconds.innerText = 4;
+        $seconds.innerText = 5;
         $minutes.innerText = 2;
         $hours.innerText = 0;
         $days.innerText = 2;
