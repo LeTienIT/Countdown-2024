@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>CountDown 2024</title>
+    <title>CountDown 2025</title>
 </head>
 <body>
     <div id="no_mobile">
@@ -96,12 +96,14 @@
         if (isMobileDevice()) {
             const pcElements = document.querySelectorAll('.a');
     
-            // Ẩn từng thẻ
+
             pcElements.forEach(element => {
                 element.style.display = 'none';
             });
             document.body.classList.add('mobile');
-            window.stop();
+
+            document.getElementById("no_mobile").style.display="block"
+            //window.stop();
             return;
         } 
         const form_add = document.getElementById("form_add");
