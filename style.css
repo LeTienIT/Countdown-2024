@@ -26,6 +26,7 @@ body{
 #no_mobile {
     display: none; 
     position: fixed;
+    z-index: 99999;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -40,9 +41,6 @@ body{
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif; 
 }
- /* body.mobile #no_mobile {
-    display: block; 
-} */
 
 #main_content{
   background: linear-gradient(to bottom, #090513 0%, #964987 75%, #fdbca3 100%);
