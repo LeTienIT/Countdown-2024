@@ -248,15 +248,23 @@
     <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/MyMath.js'></script>
     <script  src="script3.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            soundManager.pauseAll();
+        });
+        
+        
         const main_content = document.getElementById("main_content");
         const happy = document.querySelector(".buttonQuay");
         happy.addEventListener("click", function() {
-            console.log(main_content.style.display);
+            //console.log(main_content.style.display);
+            soundManager.resumeAll();
             if(main_content.style.display === '' || main_content.style.display == "none")
             {
+
                 main_content.style.display = "flex";
                 setTimeout(function() {
                     main_content.style.display = "none";
+                    soundManager.pauseAll();
                 }, 20000);
             }
             

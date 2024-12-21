@@ -2275,6 +2275,7 @@ function setLoadingStatus(status) {
 }
 
 // CodePen profile header doesn't need audio, just initialize.
+
 if (IS_HEADER) {
 	init();
 } else {
