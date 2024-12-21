@@ -1,15 +1,32 @@
 <?php
-    $conn = mysqli_connect("localhost","root","","count_down");
-    mysqli_query($conn,"SET NAME 'utf8'");
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    $sql = "SELECT * FROM `message` ORDER BY RAND() LIMIT 1";
-    $result = mysqli_query($conn,$sql);
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        echo json_encode($row);
+$api_url = "https://erp.vnconference.com/api/method/api_lt.api.post.countdown2025.get_random_row";
+
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_URL, $api_url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    'Content-Type: application/json',
+]);
+
+$response = curl_exec($ch);
+
+if (curl_errno($ch)) {
+    echo 'Error:' . curl_error($ch);
+} else {
+    $data = json_decode($response, true);
+    if (isset($data['status'])) {
+        if ($data['status'] === 'success') {
+            echo json_encode($data['message']['message']); 
+        } elseif ($data['status'] === 'no record') {
+            echo json_encode("Năm mới an khang thịnh vượng, sức khỏe dồi dào, gia đình hạnh phúc.");
+        } else {
+            echo json_encode("^_^");
+        }
     } else {
-        echo json_encode(array('error' => 'No records found'));
+        echo json_encode("^-^");
     }
-    $conn->close();
+}
+
+// Đóng cURL
+curl_close($ch);
