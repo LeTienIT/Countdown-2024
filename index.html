@@ -123,8 +123,22 @@
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    thongbao.innerHTML = xhr.responseText;
-                    console.log(xhr.responseText);
+                    try {
+                        var response = JSON.parse(xhr.responseText);
+                        if (response.success) {
+                            thongbao.innerHTML = response.message;
+                            setTimeout(function(){
+                                thongbao.innerHTML = "";
+                                document.getElementById("messageInput").value="";
+                            },2000)
+                        } else {
+                            thongbao.innerHTML = "Có lỗi xảy ra: " + response.message;
+                        }
+                        console.log(response);
+                    } catch (e) {
+                        thongbao.innerHTML = "Có lỗi xảy ra khi xử lý phản hồi từ máy chủ.";
+                        console.error("JSON parse error: ", e);
+                    }
                 }
             };
             xhr.send("content=" + encodeURIComponent(messageContent));
@@ -249,6 +263,7 @@
     <script  src="script3.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            main_content.style.display = "none";
             soundManager.pauseAll();
         });
         
