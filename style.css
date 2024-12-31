@@ -18,6 +18,12 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'font_thu_phap_3';
+    src: url(./Font-Thu-Phap/UVF_FiolexGirlVH.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 body{
     position: relative;
     z-index: 100;
@@ -572,4 +578,41 @@ body .glass::before{
     background: red;
     border-radius: 10px;
     bottom: 0;
+}
+
+/* footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(90, 86, 88, 0.658);
+    text-align: center;
+    font-size: 16px;
+    padding: 2px 0; 
+    color: #00ff22; 
+    /* border-top: 1px solid #ddd; */
+}
+footer a {
+    font-size: 18px;
+    font-family: 'font_thu_phap_3', sans-serif;
+    text-decoration: none; 
+    color: #007bff; 
+}
+footer a:hover {
+    text-decoration: underline; 
+}
+.animated-char {
+    display: inline-block;
+    animation: bounce 1.5s infinite ease-in-out;
+    transition: all 0.3s;
+}
+
+/* Animation nhảy */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
 }

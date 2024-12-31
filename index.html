@@ -257,6 +257,10 @@
         </div>
     </div>
 
+    <footer id="footer">
+        😋<a href="https://letienit.github.io/cv_me/" target="_blank" id="footer-link">Lê Đắc Tiến</a>😍
+    </footer>
+
     <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/fscreen%401.0.1.js'></script>
     <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/Stage%400.1.4.js'></script>
     <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/MyMath.js'></script>
@@ -266,7 +270,24 @@
             main_content.style.display = "none";
             soundManager.pauseAll();
         });
-        
+
+        const colors = ["#FF5733", "#33FF57", "#3357FF", "#FF33A1", "#F3FF33", "#33FFF5"];
+
+        const link = document.getElementById("footer-link");
+        const text = link.textContent;
+        link.textContent = ""; 
+
+        text.split("").forEach((char) => {
+            const span = document.createElement("span");
+            span.textContent = char;
+
+            span.style.color = colors[Math.floor(Math.random() * colors.length)];
+
+            span.style.animationDelay = `${Math.random() * 1}s`;
+
+            span.classList.add("animated-char");
+            link.appendChild(span);
+        });
         
         const main_content = document.getElementById("main_content");
         const happy = document.querySelector(".buttonQuay");
@@ -275,9 +296,10 @@
             soundManager.resumeAll();
             if(main_content.style.display === '' || main_content.style.display == "none")
             {
-
+                document.getElementById("footer").style.backgroundColor="transparent";
                 main_content.style.display = "flex";
                 setTimeout(function() {
+                    document.getElementById("footer").style.backgroundColor="rgba(90, 86, 88, 0.658)";
                     main_content.style.display = "none";
                     soundManager.pauseAll();
                 }, 20000);
